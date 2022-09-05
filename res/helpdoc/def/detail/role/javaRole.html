@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Java高级规则</title>
+<link href="../../css/global.css" rel="stylesheet" type="text/css" >
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+-->
+</style>
+</head>
+
+<body>
+<ul>
+  <li>高级规则使用的情况:
+    <ul>
+      <li>一个字段的值,依赖本表中的其它字段.可以通过其它更计算出来比如学生表中,如果有单科学分,有总分,那么总分通过其它单科的成绩计算出来.</li>
+      <li>一个字段的值,依赖于其它表中的某个字段(一般要是引用的表的某个字段)      </li>
+    </ul>
+  <li>Java代码的编写
+    <ul>
+      <li>用户编写的规则继承自JavaRole,JavaRole可以使用的方法有:
+        <ul>
+          <li>getValue(&quot;字段名&quot;) 获取本表的一个字段的值.(只能获取当前记录的值)</li>
+          <li>getReferencer(&quot;字段1&quot;, &quot;字段2&quot;...) 获取当前表的一个引用表.字段1,字段2必须是同一个外键的N个字段,比如学生表可以通过TableConfig tableConfig = getReferencer(&quot;ClassId&quot;);获取班级表的引用,然后可以通过tableConfig.getValue(&quot;字段名&quot;)获取班级表中的值.</li>
+        </ul>
+      </li>
+      <li>getReferencer返回一个TableConfig对象.tableConfig有以下方法
+        <ul>
+          <li>getValue 同JavaRole相同</li>
+          <li>getReferencer 同JavaRole相同 .</li>
+        </ul>
+      </li>
+      <li>返回值, 有两种类型:
+        <ul>
+          <li>简单类型:如果用户选择 简单类型,那么getValueByJava方法应该返回Java支持的基本数据类型.</li>
+          <li>复合类型,如果用户选择复合类型,那么getValueByJava方法只能返回ComplexObj类型ComplexObj是一个key,value对的map,可以保存多个字段值,如果用户在返回字段中写: field1,field2,field3,那么ComplexObj中应该设置以上三个字段的值:<br>
+          complexObj.addValue("field1", value1);<br>
+          complexObj.addValue("field2", value2);<br>
+          complexObj.addValue("field3", value3);</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>使用示例:(示例代码见 TestDataBuilder/res/demo/test_javarole_project.zip)<br>
+  现在有如下表定义(SQL Server上通过测试):<br>
+  <pre>create database test_javarole<br>go<br>use test_javarole<br>go<br>create table A<br>(<br> a_1 int primary key,<br> a_2 varchar(256) not null,<br> a_3 bigint not null<br>);<br>create table B<br>(<br> b_1 bigint primary key,<br> b_2 varchar(256),<br> b_3 int,<br>);<br>create table AB<br>(<br>a_1 int not null REFERENCES A(a_1),<br>b_1 bigint not null REFERENCES B(b_1),<br>ab_1 bigint not null,<br>ab_2 varchar(512),<br>primary key(a_1,b_1)<br>)</pre><br>
+并有如下需求:<br>
+  <img src="../../img/javaRole1.gif" /></li>
+  <li>在TestDataBuilder中新建工程<br>
+  <img src="../../img/javaRoleDemo/javaRole1.gif" /></li>
+  <li>连接到test_javarole数据库.<br>
+    <img src="../../img/javaRoleDemo/javaRole2.gif" />  </li>
+  <li>使用系统的&quot;自动配置所有&quot;功能:<br>
+  <img src="../../img/javaRoleDemo/javaRole3.gif" />  </li>
+  <li>进入规则编辑界面,编辑AB下面的规则:(为了生成的数据更好看些,你可以将A,B中的规则的最大值,或最大长度改小一点)<br>
+  <img src="../../img/javaRoleDemo/javaRole4.gif" /></li>
+  <li>    AB表的ab_1规则,默认是自动增长的,我们将它的生成方法改成Java:<br><img src="../../img/javaRoleDemo/javaRole5.gif" /></li>
+  <li>注意,选择Java后.数据类型自动变成Object,返回类型默认是SimpleObj,即简单对象.返回的字段为空.点击右上角的&quot;...&quot;按钮,以更方便的编辑Java代码:<br>
+  <img src="../../img/javaRoleDemo/javaRole6.gif" /></li>
+  <li>根据业务需求(ab_1的值 等于 A.a_3 * 2 + B.b3 + 100),具体代码如下:<br>
+  <pre>public Object getValueByJava()throws BaseException, SQLException{
+		//code from here. put the return value to the complexObj use complexObj.addValue
+		TableConfig tableConfigA = this.getReferencer("a_1");
+		Long a_3 = (Long)tableConfigA.getValue("a_3");
+		TableConfig tableConfigB = this.getReferencer("b_1");
+		Integer b_3 = (Integer)tableConfigB.getValue("b_3");
+		long ab_1 = a_3 * 2 + b_3 + 100;
+		//return complexObj;
+		return ab_1;
+	}	
+</pre>
+  <span class="STYLE1">首先通过a_1获取参照表A,并获取表A的a_3字段的值.然后通过b_1获取参照表B,并获取表B的b_3的值,然后计算机ab_1的值,返回</span>.</li>
+  <li>使用同样的方法将ab_2的生成方法也改成java.并在JavaEditor中写如下代码(ab_2的值 等于 'AB_' + A.a_2 + &quot;_&quot; + B.b_2):<br>
+  <pre>
+ public Object getValueByJava()throws BaseException, SQLException{<br>		//code from here. put the return value to the complexObj use complexObj.addValue<br>		TableConfig tableConfigA = this.getReferencer(&quot;a_1&quot;);<br>		String a_2 = (String)tableConfigA.getValue(&quot;a_2&quot;);<br>		TableConfig tableConfigB = this.getReferencer(&quot;b_1&quot;);<br>		String b_2 = (String)tableConfigB.getValue(&quot;b_2&quot;);<br>		String ab_2 = &quot;AB_&quot; +  a_2 + &quot;_&quot;+ b_2;<br>		<br>		return ab_2;<br>	}	 
+  <span class="STYLE1">上面的代码同ab_1的java代码基本相同.</span>
+</pre>
+  </li>
+  <li>完成后保存.</li>
+  <li>回到主界面,点击&quot;生成测试数据&quot;:<br>
+  <img src="../../img/javaRoleDemo/javaRole7.gif" /></li>
+  <li>点击开始后,便开始生成数据了.</li>
+  <li>本示例代码见 TestDataBuilder/res/demo/test_javarole_project.zip</li>
+</ul>
+</body>
+</html>

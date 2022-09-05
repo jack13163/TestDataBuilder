@@ -1,0 +1,5 @@
+res.datatype.ChineseName;
+res.datatype.IP;
+res.datatype.UUID;
+res.datatype.address.ChinaAddress;
+res.datatype.MobileNo

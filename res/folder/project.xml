@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="datasourceValidator.xsd">
+	<name>projectName</name>
+	<version>1.0</version>
+	<DatabaseConfig>
+		<name>Default</name>
+		<driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+		<url>jdbc:sqlserver://localhost:1433;databaseName=master</url>
+		<userName>sa</userName>
+		<password>sa</password>
+	</DatabaseConfig>
+	<DatabaseConfigs/>
+</project>

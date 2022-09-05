@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<table name="teacher" closeIdAutoInsert="false" count="100" onError="ignore"> 
+  <column name="ID" ref="ID" isPK="true"/>  
+  <column name="name" ref="name" isPK="false"/>  
+  <column name="sex" ref="sex" isPK="false"/>  
+  <column name="tel" ref="tel" isPK="false"/>  
+  <column name="homeAddress" ref="homeAddress" isPK="false"/>  
+  <roles> 
+    <role name="ID" type="java.lang.Integer" method="increment" distinctCount="0" prefix="tea" min="100" max="999999" nullPercent="0.0"/>  
+    <role name="homeAddress" type="resources.res.datatype.address.ChinaAddress" method="random" distinctCount="0" nullPercent="0.0" prefix="" suffix=""/>
+    <role name="name" type="resources.res.datatype.ChineseName" method="random" distinctCount="0" nullPercent="0.0"/>
+    <role name="sex" type="java.lang.String" method="enum" distinctCount="0" min="0" max="10" nullPercent="0.0"> 
+      <enum value="男" percent="2"/>  
+      <enum value="女" percent="1"/> 
+    </role>  
+    <role name="tel" type="resources.res.datatype.MobileNo" method="random" distinctCount="0" min="13100000000" max="15999999999" nullPercent="0.0" prefix="" suffix=""/>
+  </roles> 
+</table>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DatabaseConfig>
+	<name>SQLServer2k~2005</name>
+	<driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+	<url>jdbc:sqlserver://localhost:1433;databaseName=master</url>
+	<userName>sa</userName>
+	<password>sa</password>
+</DatabaseConfig>
+

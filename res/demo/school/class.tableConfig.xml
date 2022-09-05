@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<table name="class" closeIdAutoInsert="false" count="100" onError="ignore"> 
+  <column name="id" ref="id" isPK="true"/>  
+  <column name="master" ref="teacher4class.ID" isPK="false"/>  
+  <column name="classRome" ref="classRome" isPK="false"/>  
+  <column name="code" ref="code" isPK="false"/>  
+  <roles> 
+    <role name="classRome" type="java.lang.String" method="random" distinctCount="0" min="20" max="40" nullPercent="0.0"/>  
+    <role name="code" type="java.lang.Long" method="increment" distinctCount="0" prefix="WH" suffix="" min="10000" max="99999" nullPercent="0.0"/>  
+    <role name="id" type="java.lang.Integer" method="increment" distinctCount="0" prefix="CLA-" min="1000" max="9999999" nullPercent="0.0"/>  
+    <role name="teacher4class" type="java.lang.Object" method="sqlquery" distinctCount="0" nullPercent="0.0"> 
+      <sql sourceName="Default">select ID from teacher</sql> 
+    </role> 
+  </roles> 
+</table>

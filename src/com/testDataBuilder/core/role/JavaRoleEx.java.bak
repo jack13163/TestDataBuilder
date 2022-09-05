@@ -1,0 +1,33 @@
+package com.testDataBuilder.core.role;
+import java.sql.SQLException;
+import com.testDataBuilder.core.role.*;
+import com.testDataBuilder.config.*;
+import com.testDataBuilder.exception.BaseException;
+
+/**
+ * 高级规则支持。
+ */
+public class JavaRoleEx extends JavaRole {
+
+	/**
+	 * 可以使用的方法有:
+	 * public Object getValue(String columnName) 获取其中一个字段的值（当前生成的值）
+	 * public TableConfig getReferencer(String ... fields )
+	 * 可以引用的成员有:tableConfig，表示当前规则对应的表（引用当前规则的表）
+	 * tableConfig 也可以使用函数 getValue,getReference
+	 * logger 可以写日志。
+	 * 关于返回值:如果返回类型选择的是简单,那么该方法应该返回Java的
+	 * 简单类型(如Integer,Long等)如果选择的返回类型为复合类型,
+	 * 应该返回ComplexObj,ComplexObj中的值是以key,value对出现的.
+	 * 你应当使用返回字段中的各值做为key.
+	 */	
+	@Override
+	public Object getValueByJava()throws BaseException, SQLException{
+		//code from here. put the return value to the complexObj use complexObj.addValue
+		//ComplexObj complexObj = new ComplexObj();
+		//complexObj.addValue("returnFile1", value1);
+		//complexObj.addValue("returnField2", value2);
+		//return complexObj;
+		return null;
+	}	
+}

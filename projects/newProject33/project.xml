@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="datasourceValidator.xsd">  
+  <name>newProject33</name>  
+  <version>1.0</version>  
+  <DatabaseConfig>
+    <name>Default</name>
+    <templateName>MySQL</templateName>
+    <driverClass>com.mysql.jdbc.Driver</driverClass>
+    <url>jdbc:mysql://localhost:3306/demo</url>
+    <userName>root</userName>
+    <password>123456</password>
+  </DatabaseConfig>  
+  <DatabaseConfigs/> 
+</project>

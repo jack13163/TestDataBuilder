@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DatabaseConfig>
+	<name>Oracle9_10_thin</name>
+	<driverClass>oracle.jdbc.driver.OracleDriver</driverClass>
+	<url>jdbc:oracle:thin:@localhost:1521:orcl</url>
+	<userName>system</userName>
+	<password>system</password>
+</DatabaseConfig>
+

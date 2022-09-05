@@ -1,0 +1,44 @@
+package com.testDataBuilder.util;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.wutka.jox.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import org.apache.log4j.Logger;
+
+public class BeanXMLMapping2 {
+
+    static Logger logger = Logger.getLogger(BeanXMLMapping2.class);
+    
+	/**
+	 * Retrieves a bean object for the received XML and matching bean class
+	 * @throws IOException 
+	 */
+	public static Object fromXML(String xml, Class clazz) throws IOException {
+		XStream xstream = new XStream(new DomDriver());
+		xstream.alias(clazz.getName(), clazz);
+		return xstream.fromXML(xml);
+	}
+
+	/**
+	 * Returns an XML document.nbspString for the received bean
+	 * @throws IOException 
+	 */
+	public static String toXML(Object bean) throws IOException {
+		XStream xstream = new XStream(new DomDriver());
+		xstream.alias(bean.getClass().getName(), bean.getClass());
+		return xstream.toXML(bean);
+	}
+
+	/**
+	 * Find out the bean class name
+	 */
+	private static String beanName(Object bean) {
+		String fullClassName = bean.getClass().getName();
+		String classNameTemp = fullClassName.substring(fullClassName
+				.lastIndexOf(".") + 1, fullClassName.length());
+		return classNameTemp.substring(0, 1) + classNameTemp.substring(1);
+	}
+}

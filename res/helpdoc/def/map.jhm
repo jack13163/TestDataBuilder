@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='GBK' ?>
+<!DOCTYPE map
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/map_1_0.dtd">
+ 
+<map version="1.0">
+  <mapID target="index" url="index.html" />
+  
+  <mapID target="quickStart" url="quickStart.html" />
+  <mapID target="quickStart.readme" url="quickStart/readme.html" />
+  <mapID target="quickStart.basicFlow" url="quickStart/basicFlow.html" />
+  <mapID target="quickStart.stepByStep" url="quickStart/stepByStep.html" />  
+  <mapID target="quickStart.useDemo" url="quickStart/useDemo.html" />  
+  
+  <mapID target="detail" url="detail.html" />
+  <mapID target="detail.project.newProject" url="detail/project/newProject.html" />
+  <mapID target="detail.project.openProject" url="detail/project/openProject.html" />
+  <mapID target="detail.project.closeProject" url="detail/project/closeProject.html" />
+  <mapID target="detail.project.viewFileInExplorer" url="detail/project/viewFileInExplorer.html" />
+  
+  <mapID target="detail.exitSystem" url="detail/exitSystem.html" />
+  
+  <mapID target="detail.database.defConnection" url="detail/database/defConnection.html" />
+  <mapID target="detail.database.newConnection" url="detail/database/newConnection.html" />
+  <mapID target="detail.database.configConnection" url="detail/database/configConnection.html" />
+  <mapID target="detail.database.connet" url="detail/database/connet.html" />
+  <mapID target="detail.database.disconnet" url="detail/database/disconnet.html" />
+  
+  <mapID target="detail.role.userRole" url="detail/role/userRole.html" />
+  <mapID target="detail.role.userRole.getEnumValueFromFileOrSQL" url="detail/role/getEnumValueFromFileOrSQL.html" />
+  <mapID target="detail.role.userRole.javaRole" url="detail/role/javaRole.html" />
+  
+  <mapID target="detail.role.generateData" url="detail/role/generateData.html" />
+  
+  <mapID target="detail.window.preferences" url="detail/window/preferences.html" />
+  
+  <mapID target="question" url="question.html" />
+  
+</map>

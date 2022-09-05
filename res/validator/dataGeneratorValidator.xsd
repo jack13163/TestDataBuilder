@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="dataDefine" type="dataDefine">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="dataDefine">
+		<xs:choice>
+			<xs:element name="dataType" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="dataType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="dataType">
+		<xs:choice>
+			<xs:element name="enum" type="enum" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="sql" type="sql"/>
+		</xs:choice>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="2"/>
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="string"/>
+					<xs:enumeration value="boolean"/>
+					<xs:enumeration value="byte"/>
+					<xs:enumeration value="char"/>
+					<xs:enumeration value="double"/>
+					<xs:enumeration value="float"/>
+					<xs:enumeration value="int"/>
+					<xs:enumeration value="long"/>
+					<xs:enumeration value="object"/>
+					<xs:enumeration value="short"/>
+					<xs:enumeration value="date"/>
+					<xs:enumeration value="uuid"/>
+					<xs:enumeration value="ip"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="step" type="xs:int" default="1"/>
+		<xs:attribute name="method" default="random">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="random"/>
+					<xs:enumeration value="increment"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="min" type="xs:string"/>
+		<xs:attribute name="max" type="xs:string"/>
+		<xs:attribute name="minDate" type="xs:dateTime"/>
+		<xs:attribute name="maxDate" type="xs:dateTime"/>
+		<xs:attribute name="distinctCount" type="xs:int"/>
+		<xs:attribute name="prefix" type="xs:string"/>
+		<xs:attribute name="suffix" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="enum">
+		<xs:attribute name="value" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="sql">
+		<xs:simpleContent>
+			<xs:extension base="xs:string"/>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

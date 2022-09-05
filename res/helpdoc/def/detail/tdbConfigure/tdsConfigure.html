@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置测试数据生成规则</title>
+<link href="../../css/global.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+<ul>
+  <li>先在左边的树上选中需要生成数据的表，钩选<span class="tdsSysFont">生成测试数据</span>,如下：<br>
+    <img src="../../img/tdsConfigure1.gif" />
+  <li>选项解释:  
+    <ul>
+      <li><span class="tdsSysFont">使自动增长列也可以插入</span>，关闭ID列的自动增长特性，使其也可以手动插入值。</li>
+      <li>行数，为该表生成多少行测试数据。</li>
+      <li><span class="tdsSysFont">出错时</span>，出错是的处理情况：<span class="tdsSysFont">ignore</span>,忽略，<span class="tdsSysFont">exit</span>,退出系统，<span class="tdsSysFont">query</span>，询问用户。</li>
+      <li><span class="tdsSysFont">初始化</span>，插入测试数据前的初始化，可以写入一条或多条SQL语句。比如如果要在插入测试数据前清空表，可以在初始化里面输入delete from table_name(如果有外键关联可以还要清空引用表里面的数据。</li>
+      <li><span class="tdsSysFont">清理</span>，插入测试数据后的清理工作，可以写入一条或多条SQL语句。</li>
+      <li><span class="tdsSysFont">添加</span>，添加一个列配置。点击添加后，右边的表格里面会多出一行，第一列是列，可以先个，第二列是引用的规则，如果没有可用的规则，可以点击<span class="tdsSysFont"><a href="../role/userRole.html">规则-&gt;用户规则</a></span>进行添加。</li>
+      <li><span class="tdsSysFont">删除</span>，删除一个列配置。</li>
+      <li><span class="tdsSysFont">自动</span>，自动生成测试配置，并自动生成相应规则。这是我们推荐的配置方式。根据自动生成的规则配置，然后再做适当修改。</li>
+      <li><span class="tdsSysFont">清空</span>，删除当前的配置。<br>
+      </li>
+    </ul>
+  <li>配置完成后(如下图)，点击<span class="tdsSysFont">确定</span>即可。<br><img src="../../img/tdsConfigure2.gif" /></li>
+</ul>
+</body>
+</html>

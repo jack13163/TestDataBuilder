@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RecentProjects java-class="com.testDataBuilder.ui.project.RecentProjects">
+    <changed java-class="java.lang.Boolean">true</changed>
+    <recentProjectList java-class="com.testDataBuilder.ui.project.ProjectInfo">
+        <projectName>newProject33</projectName>
+        <projectPath>D:\git_home\TestDataBuilder\projects\newProject33</projectPath>
+    </recentProjectList>
+    <recentProjectList java-class="com.testDataBuilder.ui.project.ProjectInfo">
+        <projectName>newProject</projectName>
+        <projectPath>D:\git_home\TestDataBuilder\projects\newProject</projectPath>
+    </recentProjectList>
+</RecentProjects>

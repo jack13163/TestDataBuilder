@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DatabaseConfig>
+	<name>HSQLDB</name>
+	<driverClass>org.hsqldb.jdbcDriver</driverClass>
+	<url>jdbc:hsqldb:file:testdb;shutdown=true</url>
+	<userName>sa</userName>
+	<password></password>
+</DatabaseConfig>
+

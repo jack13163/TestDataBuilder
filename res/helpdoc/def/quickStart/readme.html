@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<title>系统简介</title>
+<link href="../css/global.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+
+<h1 align="center">TestDataBuilder Readme</h1>
+<p>TestDataBuilder是一个采用Java编写的，完全开源，免费的测试数据生成工具，软件遵循GPL协议.</p>
+<h4>功能描述</h4>
+<ul>
+  <li>本程序是一款自动化测试辅助工具</li>
+  <li>可以帮助程序开发或测试人员自动生成数据库表中的测试数据,并且具有期望的值分布和列间相关性</li>
+  <li>可以通过配置工具配置数据生成的规则,并且有一个自动配置引擎，可以根据已经存在的数据库自动生成配置文件 </li>
+
+  <li>支持如下几种规则:
+    <ul>
+      <li>自动增长,一般为数据型.</li>
+      <li>随即方式,数据型或字符串.</li>
+      <li>枚举类型, 用户事先输入枚举值,并可以设置好填充比例.(枚举值可以从文件中加载,或从数据库查询)</li>
+      <li>SQL查询方式,可以从其它数据库查询,将查询结果作为数据源.</li>
+      <li>SQL函数,直接使用函数返回值,如 createTime,updateTime等字段可以使用getdate()</li>
+      <li>Java高级规则,TestDataBuilder中的高级规则,可以生成复杂的数据,以满足各种业务需求,.(高级规则使用Java代码描述)</li>
+    </ul>
+  </li>
+  <li>可以支持JDBC所支持的所有数据库类型 </li>
+  <li>用户可以自己开发新数据类型 </li>
+  <li>附带一个查询控制台，可以处理常规SQL查询操作 </li>
+  <li>生成的测试数据，可以直接插入到数据表中，也可以以Insert语句形式记录在文件中</li>
+</ul>
+<h4>版权声明</h4>
+<ul>
+  <li>TestDataBuilder 版权所有 2007-2008 LiuXiaojie</li>
+  <li>本软件中，SQL Editor中使用的语法高亮组件(jEdit 2.2.1 syntax highlighting package)来自：http://sourceforge.net/projects/jedit-syntax/ 版权归原作者所有</li>
+  <li>本软件可以免费&amp;自由使用，但请您独立承担因此带来的后果。作者不提供任何担保。如果使用中您发现有BUG，请Email通知我，并简单描述BUG现象。</li>
+</ul>
+<h4>GPL解释</h4>
+<ul>
+   <li>GPL协议和BSD, Apache Licence等鼓励代码重用的许可很不一样。GPL的出发点是代码的开源/免费使用和引用/修改/衍生代码的开源/免费使用，但不允许修改后和衍生的代码做为闭源的商业软件发布和销售。这也就是为什么我们能用免费的各种linux，包括商业公司的linux和linux上各种各样的由个人，组织，以及商业软件公司开发的免费软件了。GPL协议的主要内容是只要在一个软件中使用(&quot;使用&quot;指类库引用，修改后的代码或者衍生代码)GPL 协议的产品，则该软件产品必须也采用GPL协议，既必须也是开源和免费。这就是所谓的&quot;传染性&quot;。GPL协议的产品作为一个单独的产品使用没有任何问题，还可以享受免费的优势。由于GPL严格要求使用了GPL类库的软件产品必须使用GPL协议，对于使用GPL协议的开源代码，商业软件或者对代码有保密要求的部门就不适合集成/采用作为类库和二次开发的基础。其它细节如再发布的时候需要伴随GPL协议等和BSD/Apache等类似。</li>
+</ul>
+<p align="right"> 联系我: TestDataBuilder@163.com<br>
+  时&nbsp;&nbsp;间: 2008.1.1 于 中国.上海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  
+  <span class="hideTxt">write by Lxj</span>
+
+</body>
+</html>

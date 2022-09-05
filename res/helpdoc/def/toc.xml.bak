@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='GBK' ?>
+<!DOCTYPE toc
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+ 
+<toc version="1.0">
+<tocitem image="toplevelfolder" target="index" text="TestDataBuilder使用说明">
+    <tocitem target="quickStart" text="快速入门">
+      <tocitem target="quickStart.readme" text="系统简介"/>
+      <tocitem target="quickStart.stepByStep" text="跟我开始"/>
+      <tocitem target="quickStart.basicFlow" text="基本流程"/>
+    </tocitem>
+    <tocitem target="detail" text="使用详解">
+     	<tocitem target="detail.project" text="工程">
+	      <tocitem target="detail.project.newProject" text="新建工程"/>
+	      <tocitem target="detail.project.openProject" text="打开工程"/>
+	      <tocitem target="detail.project.closeProject" text="关闭工程"/>
+	      <tocitem target="detail.project.viewFileInExplorer" text="在文件浏览器中查看"/>
+	    </tocitem>
+	    
+	    <tocitem target="detail.database" text="数据库">
+	    	<tocitem target="detail.database.defConnection" text="修改默认连接配置"/>
+	    	<tocitem target="detail.database.newConnection" text="新建连接"/>
+	    	<tocitem target="detail.database.configConnection" text="配置连接"/>
+	    	<tocitem target="detail.database.connet" text="连接"/>
+	    	<tocitem target="detail.database.disconnet" text="断开连接"/>	    	
+	    </tocitem>
+	   <tocitem target="detail.role" text="规则">
+	    	<tocitem target="detail.role.userRole" text="用户规则">
+	    		<tocitem target="detail.role.userRole.getEnumValueFromFileOrSQL" text="从文件或SQL语句导入枚举值"/>
+	    	</tocitem>
+	    	<tocitem target="detail.role.generateData" text="生成测试数据"/>
+	    </tocitem>
+	    
+	    <tocitem target="detail.window.preferences" text="首选项"/>
+	    <tocitem target="detail.exitSystem" text="退出系统"/>
+    </tocitem>
+    <tocitem target="question" text="问题与解答">
+     
+    </tocitem>
+</tocitem>
+</toc>

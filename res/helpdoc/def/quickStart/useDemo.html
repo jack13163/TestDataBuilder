@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<title>使用Demo.</title>
+<link href="../css/global.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+<p>本教程使用TestDataBuilder自带的school工程生成测试数据。</p>
+<h3>先看看使用TestDataBuilder生成的测试数据吧：(下面用的外观是系统本地的)</h3>
+<p><img src="../img/demo/data1.gif" ></p>
+<p><img src="../img/demo/data2.gif" /></p>
+<img src="../img/demo/data3.gif" /><br>
+
+<h3>一:先执行数据库脚本,创建数据库. 数据库脚本如下。(本教程以mysql5为例)</h3>
+SQL Server 脚本:(或使用项目目录下res\demo\tdbDemoForSqlserver.sql文件)<br>
+<p>create database school<br />
+  go<br />
+  use school<br />
+go</p>
+<p>create table teacher<br />
+  (<br />
+  ID varchar(255) primary key,<br />
+  name varchar(255) not null,<br />
+  sex varchar(10) not null,<br />
+  tel varchar(255),<br />
+  homeAddress varchar(255),<br />
+  )</p>
+<p>create table class<br />
+  (<br />
+  id varchar(255) primary key,<br />
+  code varchar(255) not null,<br />
+  master varchar(255) foreign key(master) REFERENCES teacher(id),<br />
+  classRome varchar(255) not null,<br />
+  )</p>
+<p>create table student<br />
+  (<br />
+  ID int IDENTITY primary key,<br />
+  no varchar(255) not null, <br />
+  name varchar(255) not null,<br />
+  sex varchar(10) not null,<br />
+  age int not null,<br />
+  tel varchar(256),<br />
+  birthday datetime,<br />
+  classId varchar(255) foreign key(classId) REFERENCES class(id),<br />
+  homeAddress varchar(255),<br />
+  createTime datetime,<br />
+  count int<br />
+  )<br />
+  go<br />
+</p>
+<p><br>
+</p>
+<br>
+My SQL 脚本如下:(或使用项目目录下res\demo\tdbDemoForSqlserver.sql文件)<br>
+<p>-- ----------------------------------------------------------------------<br />
+  -- MySQL Migration Toolkit<br />
+  -- SQL Create Script<br />
+-- ----------------------------------------------------------------------</p>
+<p>SET FOREIGN_KEY_CHECKS = 0;</p>
+<p>CREATE DATABASE IF NOT EXISTS `school`<br />
+  CHARACTER SET utf8 COLLATE utf8_general_ci;<br />
+  USE `school`;<br />
+  -- -------------------------------------<br />
+  -- Tables</p>
+<p>DROP TABLE IF EXISTS `school`.`class`;<br />
+  CREATE TABLE `school`.`class` (<br />
+  `id` VARCHAR(255) NOT NULL,<br />
+  'code' VARCHAR(255) NOT NULL,<br />
+  `master` VARCHAR(255) NULL,<br />
+  `classRome` VARCHAR(255) NOT NULL,<br />
+  PRIMARY KEY (`id`),<br />
+  CONSTRAINT `FK__class__master__0425A276` FOREIGN KEY `FK__class__master__0425A276` (`master`)<br />
+  REFERENCES `school`.`teacher` (`ID`)<br />
+  ON DELETE NO ACTION<br />
+  ON UPDATE NO ACTION<br />
+  )<br />
+  ENGINE = INNODB;</p>
+<p>DROP TABLE IF EXISTS `school`.`student`;<br />
+  CREATE TABLE `school`.`student` (<br />
+  `ID` INT(10) NOT NULL AUTO_INCREMENT,<br />
+  `no` VARCHAR(255) NOT NULL,<br />
+  `name` VARCHAR(255) NOT NULL,<br />
+  `sex` VARCHAR(10) NOT NULL,<br />
+  `age` INT(10) NOT NULL,<br />
+  `tel` VARCHAR(256) NULL,<br />
+  `birthday` DATETIME NULL,<br />
+  `classId` VARCHAR(255) NULL,<br />
+  `homeAddress` VARCHAR(255) NULL,<br />
+  `count` INT(10) NULL,<br />
+  PRIMARY KEY (`ID`),<br />
+  CONSTRAINT `FK__student__classId__07020F21` FOREIGN KEY `FK__student__classId__07020F21` (`classId`)<br />
+  REFERENCES `school`.`class` (`id`)<br />
+  ON DELETE NO ACTION<br />
+  ON UPDATE NO ACTION<br />
+  )<br />
+  ENGINE = INNODB;</p>
+<p>DROP TABLE IF EXISTS `school`.`teacher`;<br />
+  CREATE TABLE `school`.`teacher` (<br />
+  `ID` VARCHAR(255) NOT NULL,<br />
+  `name` VARCHAR(255) NOT NULL,<br />
+  `sex` VARCHAR(10) NOT NULL,<br />
+  `tel` VARCHAR(255) NULL,<br />
+  `homeAddress` VARCHAR(255) NULL,<br />
+  PRIMARY KEY (`ID`)<br />
+  )<br />
+  ENGINE = INNODB;</p>
+<p>&nbsp;</p>
+<p>SET FOREIGN_KEY_CHECKS = 1;</p>
+<p>-- ----------------------------------------------------------------------<br />
+  -- EOF</p>
+<p></p>
+<p><br>
+</p>
+现在开始吧:<br>
+
+<ul>
+  <li>点击菜单 <span class="tdsSysFont">工程->打开</span>(或工具栏<img border="1" src="../img/openProject.gif" width="19" height="20" />按钮) ,出现如下对话框:<br>
+    <img src="../img/demo/openProject.gif" />
+  
+  <li>选中TestDataBuilder下面的res\demo\school目录，点击“<span class="tdsSysFont">打开</span>”,出现如下界面:<br>
+    <img src="../img/demo/main1.gif" width="710" height="495" />
+  <li>school下面应该有三个表，并且都有配置数据生成规则。<br>
+    <img src="../img/demo/preOpenDefConnection.gif" width="710" height="495" /><br>
+  <li>现在点击 <span class="tdsSysFont">数据库</span>-&gt;<span class="tdsSysFont">默认连接</span>,修改数据库连接.(如果你使用的SQLServer数据库，请选择MS SQL Server类型,数据库选择school)<br>
+  <img src="../img/demo/defConnConfig.gif" />  
+  <li>在密码栏输入你的数据库密码。<br>
+  <img src="../img/demo/defConfigOK.gif" width="428" height="273" />  
+  <li>点击<span class="tdsSysFont">确定</span>.<br>
+  <img src="../img/demo/main2.gif" width="710" height="495" />  
+  <li>点击<span class="tdsSysFont">规则</span>-&gt;<span class="tdsSysFont">生成测试数据</span>.出现如下界面:<br><img src="../img/demo/genData.gif" />
+  <li>图片下面是要生成的所有表信息，默认所有配置的表都会生成  测试数据。如果某些表你不需要为他生成测试数据，你只需要去掉前面的钩就行了。点击开始，开始生成测试数据。(点击开始后，<span class="tdsSysFont">开始</span>按钮会变成<span class="tdsSysFont">停止</span>)<br>
+    <img src="../img/demo/genData2.gif" />
+  <li>正在生成测试数据，只到出现如下对话框:<br>
+    <img src="../img/demo/genOver.gif" width="268" height="115" />
+  <li>点击<span class="tdsSysFont">确定</span>后,回到原界面。<br>
+  <img src="../img/demo/genData.gif" />  
+  <li>再点击确定，回到主界面。在查询分析器中查询各表生成的数据。（本页前三图所示） ,要想生成这样的数据,其实很简单,你需要自己手动编辑规则.生成的数据一会按你的需要生成数据了.<a href="../detail/role/userRole.html">了解更多关于规则</a>
+</ul>
+
+<h3>来看看School示例工程的详细配置吧:</h3>
+<p align="center"><img src="../img/demo/role1.gif" /><br> 
+teacher表id列的规则，类型改为Integer,是自动增长的，从10开始往上长，加上前缀tea,生成的数据为:tea100,tea101....</p>
+<p align="center"><img src="../img/demo/role2.gif" /><br> 
+teacher表homeAddress列的规则，使用自定义类型ChinaAddress,生成数据如:湖北省，武汉市。生成方法无效。</p>
+<p align="center"><img src="../img/demo/role3.gif" /><br> 
+teacher表name列的规则，使用自定义类型ChineseName.生成中文姓名</p>
+<p align="center"><img src="../img/demo/role4.gif" /><br> 
+teacher表sex列的规则，String类型，采用枚举值，(取值男，女,其中男女比重为2:1)</p>
+<p align="center"><img src="../img/demo/role5.gif" /><br> 
+teacher表tel列的规则，类型为手机号码类型，并且在1310000000到15999999999之间。Null比例为50%.可以看看生成的数据,tel字段大约有50%为Null的。</p>
+<p align="center"><img src="../img/demo/role6.gif" /><br> 
+student表age列的规则，是随机的数值，并且都在20到30之间。</p>
+<p align="center"><img src="../img/demo/role7.gif" /><br>
+student表birthday列的规则，是随机的时间值，并且都在1984-08-08 00-00-00到1987-08-08 00-00-00之间。</p>
+<p align="center"><img src="../img/demo/role8.gif" /><br>
+student表id列使用的class4student规则，使用的是sqlquery是使用语句&quot;select id from student&quot; 做查询的。</p>
+<p align="center"><img src="../img/demo/role9.gif" /><br>
+student表count列的规则，是随机的数值，并且都在800到900之间。</p>
+<p align="center"><img src="../img/demo/role10.gif" /><br>
+student表homeAddress列的规则，使用的是自定义类型ChinaAddress。生成中国的地址。</p>
+<p align="center"><img src="../img/demo/role11.gif" /><br>
+student表name列的规则，使用自定义类型ChineseName，生成中文名字。</p>
+<p align="center"><img src="../img/demo/role12.gif" /><br>
+student表no列的规则，是由&quot;BD-&quot; + student所在的班级的Code + student的姓名组成,生成的数据如下:BD-WH10087:张三,下面是Java代码:</p>
+<p align="center"><img src="../img/demo/role12.2.gif" /></p>
+<p align="center"><img src="../img/demo/role13.gif" /><br>
+student表sex列的规则，使用枚举值,取值男，女，比例为 1:1</p>
+<p align="center"><img src="../img/demo/role14.gif" /><br>
+student表tel列的规则，使用自定义类型手机号码，并且值在13100000000到15999999999之间。</p>
+<p align="center"><img src="../img/demo/role15.gif" /><br>
+class表classRome列的规则，使用随机生成的String,长度在20到40之间。</p>
+<p align="center"><img src="../img/demo/role16.gif" /><br>
+class表id列的规则，使用自动增长的Integer型，从1000开始，到9999999结束。</p>
+<p align="center"><img src="../img/demo/role17.gif" /><br>
+student表master列的规则teacher4class，使用sqlquery类型（因为是外键，需要从引用表中查出来)。</p>
+<p align="center"><img src="../img/demo/role18.gif" /><br />
+  class表的code列的规则,使用WH前缀,加数字增长方式.</p>
+</body>
+
+
+</html>

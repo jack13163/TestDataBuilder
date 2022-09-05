@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首选项设置</title>
+<link href="../../css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<ul>
+  <li>点击菜单 <span class="tdsSysFont">窗口->首选项</span>(或工具栏按钮<img src="../../img/preferencesBtn.gif" >),出现如下对话框:<br>
+    <img src="../../img/preferencesDialog.gif" >
+  <li>各选项意义如下：<br >
+    <ul>
+      <li><span class="tdsSysFont">此配置应用于</span>,该选项框可以取两个值:      </li>
+    </ul>
+  </li>
+  <ul>
+    <ul>
+      <li><span class="tdsSysFont">所有工程</span>，配置属于全局性的，对所以工程有效。</li>
+      <li><span class="tdsSysFont">当前工程</span>，配置只属于当前工程，只对当前工程效。</li>
+      <li>如果当前工程已有首选项配置，想应用全局配置，请点击<span class="tdsSysFont"> 删除当前工程的首选项配置</span>，再<span class="tdsSysFont">应用</span></li>
+    </ul>
+    <li><span class="tdsSysFont">保存数据库元信息</span>,选中该项，可以保证断开连接后TDS系统仍可以工作。</li>
+    <li><span class="tdsSysFont">程序启动时自动连接数据库</span>, 选中该项目，在TDS系统启动时会根据加载最后一次编辑的工程，并自动连接数据库。</li>
+    <li><span class="tdsSysFont">当连接数据库出错时,读取本地信息</span>。只有当<span class="tdsSysFont">保存数据库元信息</span>选中时，该选项才有意义。</li>
+    <li><span class="tdsSysFont">自动生成配置时，不包含自动增长列</span>。</li>
+    <li><span class="tdsSysFont">插入时使自动增长列也可以插入</span>。</li>
+    <li><span class="tdsSysFont">插入数据库之前先清空表</span>，选中该项，在自动生成配置时，会自动添加清空表的相关语句。</li>
+    <li><span class="tdsSysFont">以SQL语句形式记录生成的数据</span>，选中该项，生成数据后，还会将数据以insert语句形式记录在文本文件中。</li>
+  </ul>
+</ul>
+</body>
+</html>

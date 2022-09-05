@@ -1,0 +1,32 @@
+一、在Unix/Linux上令JVM支持中文输出
+
+如果用户使用的是UNIX的远程服务器，就会遇到中文字体在图像中输出的问题，特别是由于许多管理员并不喜欢把主机的locale定为zh(因为意味着可能出乱码或必须装微形图形终端象zhcon，但很多情况下这样的条件并不具备)。大部分程序员的JAVA经验苟限于JSP脚本程序，部分熟练的程序员大概开发过中间件、servlet、applet或在WINDOWS上运行的GUI程序。如果开发的jfreechart是使用WINDOWS作为主机运行的话，可以略过这一段，但如果使用的是UNIX类型的服务器的话，就常常遇到意想不到的中文显示困难，甚至还未到输出中文字体的阶段，程序就报告 display异常错误。原因就在于，JAVA awt原来是针对(X)windows GUI编写的程序，它常常需要使用display 1:0的设置设定显示方式，在服务器模式下(象jsp或servlet)，根本就不会有XWindowns运行，这时就会在许多程序中引起can not got display setting to 0:0的错误，包括jfreechart。解决办法是在JVM启动中增加-Djava.awt.headless=true的设置。但这样又带来另一个问题，会令使用象frame.getImage()方法的代码中引起headless  Exception，导致程序中止,而使用ImageBuffer的程序就不会受到影响。
+
+象jfreechart这样基于java awt，java Swing, java 2D API和程序应用到Linux/UNIX上，中文字体的输出是一个必须解决的问题，否则连jfreereport都不能使用了。servlet也会碰到类似的问题，但解决方式显得相对简单，servlet package已经内置了解决办法，一般情况下，在 servlet抬头设两句：
+
+response.setContentType("text/html;charset=UTF-8");
+request.setCharacterEncoding("UTF-8");  
+
+中文乱码就不得存在。与简单的jsp/servlet字符集转换相比，这个问题要复杂得多，甚至比一般的linux中文化还要复杂。在正常情况下， jre只包含少数几种字体（Font），但可以从X 系统，象windows获得喜欢的字体支持；因此，如果开发者和使用者是在中文WINDOWS系统上开发，大概不会发觉问题的存在。但一旦当程序发布到 UNIX/Linux系统上后，就会发现图形中的中文字符成为一个个的问号或者小方框。而此时，象jsp/servlet这样的程序在客户端的显示却是完全正常的。一般情况下，JAVA默认情况下是使用en_OTF-8,或者ISO_8859_1读入字符串，因此，象JSP通常使用从8859_1强制转型为gb3312/GBK,就可以正常显示中文，但是在上述的情形下，这种强制转型地是完全无效的。为什么呢？如果程序员的系统概念是清晰的话，就会明白， JSP/SERVLET的字符串输出，只是输出字型，然后由客户端（一般是浏览器）在客户端桌面重整字型，用的是客户端的字体,而相反，JfreeChart这样的图形程序输出的是一个图像，用的是服务器端jre的字体，与Xwindows的字体也无关。当系统本身不带有字型时(font)，这正是服务器所常见的，就只能向jre添加支持中文的字体(font)才能根本上解决这个问题。
+
+Jre 的字体设置原理与Xwindows相似，并延用相同的工具，事实上，二进制字体文件延用相同的标准，各个公司间的字体集，象联想、方正、微软以及 linux Xwindows下是相同的，完全可以互相拷贝，仅仅是读取字体的方式流程和设置方式稍有区别。目录提及linux汉化的文章，其中主要就是增加中文字体的支持，很多是废话连篇，不知其所以然乱撞一通后惊呼"搞定啦"这样不可重复的形式。所以这里先复习一下，然后和JRE的设置对照，原理就会显得比较清晰。目前linux的字体有两处使用，一是linux console下的字体，二是Xwin等应用程序的字体，包括象zhcon这样的伪console程序。每处应用字体的程序都可以有自已的字体设置目录；但随着Linux集成程度的强化，都倾向向通过默认的unixsocket7000端口调用xfs的字体服务。因此，字体设置只需对xfs进行设置就可以完成。一些文章声称要停掉XFS，实际上毫无必要；xfs的调用仅仅是作为一个在XFConfig中的FontPath选项，作为另一个添加字体的方法，就是直接把包含字体的目录添加到FontPath，然后手工执行ttmkfdir——恰恰这本来是xfs设计代替您去做的。用户实际上需要做的，要么是直接在图形工具中把字体文件添加到fonts：\\\中，或者是手工把字体文件加到xfs的目录下的对应locale的目录中，一般是在 /usr/share/lib/fonts/zh_CN/TrueType，重启xfs就搞定了。作为手工添加到XFConfig中的目录，在XWin 中，简单地说，字体位图文件是通用的，包括对JRE，放在某一个目录中，用户需要做的就是通知XWIN这些目录在什么地方，设置的位置就在 /etc/X11/XConfig的FontPath项。运行ttmkfdir命令生成fonts.dir文件，实际上都是字体调用的对照表，另外用户可以编辑fonts.alias这样的文件，目的就是让字体有个易记的名字。因此，字体的安装关键在于字体位图文件（拷到某个目录），对照文件（由 ttmkfdir命令生成），和字体别名设置，所不同的是，在Xwin中这些由xfs自动完成，在jre中，就要开发者自已手工完成。
+
+就Jre 而言，字体位图目录是固定的，在$JRE_HOME/lib/fonts目录中;fonts.dir*的目录对照表文件也是一样的，同样是由 ttmkdir程序生成，而相当于别名等设置的文件，集中在$JRE_HOME/lib目录下的*font.properties*"文件中定义。如果 JVM能直接支持中文输出，那么就要求*font.properties*属性文件中指示的字体型本身是支持中文的（换言之，JSDK自带的字体文件是不支持中文的）。按http://java.sun.com/j2se/1.3/docs/guide/intl/fontprop.html的说明，JVM按以下顺序搜索字体属性文件,尖括号是JVM检测的系统属性：
+
+font.properties.<language>_<region>_<encoding>.<osVersion>
+font.properties.<language>_<region>_<encoding>
+font.properties.<language>_<region>.<osVersion>
+font.properties.<language>_<region>
+font.properties.<language>_<encoding>.<osVersion>
+font.properties.<language>_<encoding>
+font.properties.<language>_<osVersion>
+font.properties.<language>
+font.properties.<encoding>.<osVersion>
+font.properties.<encoding>
+font.properties.<osVersion>
+font.properties
+
+
+但在大多数情况下，实际上只需要面向一个font.properties文件。重新编一个font.properties文件是一项艰苦的工程，幸好在 Linux中有一个font.properties.zh.Turbo，本来是面向TurboLinux用户，不过在大多数情况下可以基于它修改。把这个文件重命名为font.properties，覆盖掉原来的文件，但系统这时仍不支持中文，查看一下，就会发现 font.properties.zh.Turbo文件中的"-tlc-song-medium-r-normal--*-%d-*-*-c-*-gbk -0"字型在fonts.dir对照表中并不具备，这种字型包含在TurboLinux的系统字型库中。下面的方法有两个，一是安装这种字体，二是更改另一种字体型库并重新指定。TurboLinux的字体安装文件名字是ttf-zh-song*rpm，在互联网上可以找到，安装后把 /usr/lib/X11/fonts/tt下的ttf文件拷贝到$JRE_HOME/lib/fonts目录下，重新生成fonts.dir文件。第二种办法就是重找字体库，微软WINDOWS上的fonts目录下的ttf文件一般可用，但更全的是从http://www.microsoft.com/china/windows2000/downloads/18030.asp 下载它的字符集文件，安装后把ttf拷到JRE的fonts目录下；另外， XWin如果支持中文的话，可以从/usr/lib/X11/fonts/TrueType下找到一两个支持中文的字体文件。
+
+把这些文件统统拷到JRE的fonts目录并不能令JVM立刻支持中文，回想一下前面提到的，在font.properties中指定的文字类型，必须有一个对照表fonts.dir指示JVM如何把用户调用的font类型匹配到相应的字型文件上。因此，运行ttmkfdir > fonts.dir生成新的对照表。用Vi打开这个文件，最上面的数字是系统可以调用的字型数目，下面的属性值对左侧就是物理字型名称，右侧是它的编号，这就是用到font.properties 文件中指明使用的编号（包含了设置，左侧的就是字符的别名，即虚拟字型)，区别仅仅是把0-0-0c-0这类设置中的某几项改作通配符和%d接受调用参数而已，不改也行，大不了输出的字难看一点（反正我不是美工，不太关心）。用可用的字型编号代替了font.properties中无效的字型设置后，理论上似乎JVM已经支持中文了，但在实际操作上，仍是经常见到问号、空格之类，原因就在于JAVA对中文的支持不但与运行环境有关，还与编译参数有关，如果类文件不是以gb2312/encoding编译的话，等同于读入是OTF-8/8859_1，这时再转换也没有用了，因此，如果是drawString 之类的，必须切记使用(-encoding gb2312)；当然，如果操作系统本身已经是中文的话，这条就由编译器自动采纳了

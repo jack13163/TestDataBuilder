@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<table name="student" closeIdAutoInsert="false" count="111" onError="ignore"> 
+  <column name="no" ref="no" isPK="true"/>  
+  <column name="name" ref="name" isPK="false"/>  
+  <column name="sex" ref="sex" isPK="false"/>  
+  <column name="age" ref="age" isPK="false"/>  
+  <column name="tel" ref="tel" isPK="false"/>  
+  <column name="birthday" ref="birthday" isPK="false"/>  
+  <column name="classId" ref="class4student.id" isPK="false"/>  
+  <column name="homeAddress" ref="homeAddress" isPK="false"/>  
+  <column name="count" ref="count" isPK="false"/>  
+  <column name="createTime" ref="createTime" isPK="false"/>  
+  <roles> 
+    <role name="age" type="java.lang.Integer" method="random" distinctCount="0" min="20" max="30" nullPercent="0.0"/>  
+    <role name="birthday" type="java.sql.Date" method="random" distinctCount="0" min="1984-08-08 00-00-00" max="1987-08-08 00-00-00" nullPercent="0.0"/>  
+    <role name="class4student" type="java.lang.Object" method="sqlquery" distinctCount="0" nullPercent="0.0"> 
+      <sql sourceName="Default">select id from class</sql> 
+    </role>  
+    <role name="count" type="java.lang.Integer" method="random" distinctCount="0" min="800" max="900" nullPercent="0.0"/>  
+    <role name="createTime" type="java.sql.Date" method="sqlfunc" distinctCount="0" min="1970-01-01 08-00-00" max="1970-01-01 08-00-00" nullPercent="0.0"> 
+      <sql>getdate()</sql> 
+    </role>  
+    <role name="homeAddress" type="resources.res.datatype.address.ChinaAddress" method="random" distinctCount="0" nullPercent="0.0"/>
+    <role name="name" type="resources.res.datatype.ChineseName" method="random" distinctCount="0" nullPercent="0.0"/>
+    <role name="no" type="java.lang.Object" method="java" distinctCount="0" prefix="BD-" nullPercent="0.0" suffix="">
+      <javaCode returnType="simpleObj"><![CDATA[package com.testDataBuilder.core.role;
+import java.sql.SQLException;
+import com.testDataBuilder.core.role.*;
+import com.testDataBuilder.config.*;
+import com.testDataBuilder.exception.BaseException;
+
+/**
+ * 高级规则支持。
+ */
+public class JavaRoleEx extends JavaRole {
+
+	/**
+	 * 可以使用的方法有:
+	 * public Object getValue(String columnName) 获取其中一个字段的值（当前生成的值）
+	 * public TableConfig getReferencer(String ... fields )
+	 * 可以引用的成员有:tableConfig，表示当前规则对应的表（引用当前规则的表）
+	 * tableConfig 也可以使用函数 getValue,getReference
+	 * logger 可以写日志。
+	 * 关于返回值:如果返回类型选择的是简单,那么该方法应该返回Java的
+	 * 简单类型(如Integer,Long等)如果选择的返回类型为复合类型,
+	 * 应该返回ComplexObj,ComplexObj中的值是以key,value对出现的.
+	 * 你应当使用返回字段中的各值做为key.
+	 */	
+	@Override
+	public Object getValueByJava()throws BaseException, SQLException{
+		//code from here. put the return value to the complexObj use complexObj.addValue
+		ComplexObj complexObj = new ComplexObj();
+		TableConfig classTableConfig = this.getReferencer("classId");
+		String code = (String)classTableConfig.getValue("code");
+		String name = (String)this.getValue("name");
+		
+		//complexObj.addValue("returnFile1", value1);
+		//complexObj.addValue("returnField2", value2);
+		//return complexObj;
+		return code + "->" + name;
+	}	
+}
+]]></javaCode>
+    </role>  
+    <role name="sex" type="java.lang.String" method="enum" distinctCount="0" min="0" max="10" nullPercent="0.0"> 
+      <enum value="男" percent="1"/>  
+      <enum value="女" percent="1"/> 
+    </role>  
+    <role name="tel" type="resources.res.datatype.MobileNo" method="random" distinctCount="0" min="13100000000" max="15999999999" nullPercent="0.5"/>
+  </roles> 
+</table>

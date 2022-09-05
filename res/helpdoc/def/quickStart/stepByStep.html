@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<title>跟我开始</title>
+<link href="../css/global.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+<p>以下以SQLServer2000为例。</p>
+<h3>一:打开TestDataBuilder主程序,看到如下界面。</h3>
+<img src="../img/main.gif" width="727" height="500" />
+<ul>
+	<li>1区为菜单栏
+    <li>2区为工具栏
+    <li>3区为数据库结构浏览视图
+    <li>4区为用户工具区
+</ul>
+<h3>二:新建工程</h3>
+<ul>
+  <li>点击菜单 <span class="tdsSysFont">工程->新建</span>(或工具栏<img border="1" src="../img/newProject.gif" width="19" height="20" />按钮) ,出现如下对话框:<br><img src="../img/newProjectDialog.gif" />
+  <li>输入工程名称<strong>master</strong>,工程目录 <strong>D:\</strong> , 点击<span class="tdsSysFont">确定</span>,出现如下配置数据库连接的对话框:<br>
+    <img src="../img/configConnection.gif" width="428" height="273" />
+  
+  <li>默认的数据库是master(您最好建一个测试数据库,在master库中做测试毕竟是不太明智的),帐号为sa,密码也是sa,你需要根据你的情况作修改,修改完成后,点击测试,如果通过,请点击确定.(如果配置出错,或数据库原因连接不上会有错误提示)  
+  <li>点击<span class="tdsSysFont">确定</span>后,左边的数据库结构视图应该已经有了树枝树叶,如下图:<br>
+  <img src="../img/databaseView.gif" />
+</ul>
+<h3>三:配置规则</h3>
+<ul>
+  <li>选中数据库节点,上例中是master,右键-&gt;<span class="tdsSysFont">自动配置所有</span>,你会看到所有图标都变绿色了,master下面的所有表都将会生成测试数据,每个表会生成108条记录(这是默认值,可以在首选项里面重设该值,后面的章节会讲到)
+</ul>
+<h3>四:生成测试数据</h3>
+<ul>
+  <li>点击菜单 <span class="tdsSysFont">规则-&gt; 生成测试数据</span> 出现如下对话框:<br>
+  <img src="../img/generateDataDialog.gif" />  
+  <li>点击<span class="tdsSysFont">开始</span>按钮,开始生成数据<br>
+  <img src="../img/generateDataDialog-begin.gif" />
+  <li>大功告成,您现在可以打开数据库查询分析器,查询自动生成的测试数据 ,此时你看到的数据,可能还不太今你满意,因为其中数据可能都是一些无意义的数据,如果你希望生成的数据更有意思,更接近真实,你需要自己动手编辑规则.<a href="useDemo.html">请看这里</a>.
+</ul>
+</body>
+
+
+</html>

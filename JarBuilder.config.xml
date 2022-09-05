@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment></comment>
+<entry key="version">1.0</entry>
+<entry key="mainClass">TestDataBuilder</entry>
+<entry key="baseDir">E:\workspace\TestDataBuilder\bin</entry>
+<entry key="jarName">TestDataBuilder.jar</entry>
+</properties>

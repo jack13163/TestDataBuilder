@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='GBK' ?>
+<!DOCTYPE index
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/index_1_0.dtd">
+ 
+<index version="1.0">
+  <indexitem target="index" text="目录">
+	  <indexitem target="quickStart" text="快速入门">
+	      <indexitem target="quickStart.readme" text="系统简介"/>
+	      <indexitem target="quickStart.stepByStep" text="跟我开始"/>
+	  </indexitem>
+	   <indexitem target="detail" text="使用详解">
+     	<indexitem target="detail.project" text="工程">
+	      <indexitem target="detail.project.newProject" text="新建工程"/>
+	      <indexitem target="detail.project.openProject" text="打开工程"/>
+	      <indexitem target="detail.project.closeProject" text="关闭工程"/>
+	      <indexitem target="detail.project.viewFileInExplorer" text="在文件浏览器中查看"/>
+	    </indexitem>
+	    
+	    <indexitem target="detail.database" text="数据库">
+	    	<indexitem target="detail.database.defConnection" text="修改默认连接配置"/>
+	    	<indexitem target="detail.database.newConnection" text="新建连接"/>
+	    	<indexitem target="detail.database.configConnection" text="配置连接"/>
+	    	<indexitem target="detail.database.connet" text="连接"/>
+	    	<indexitem target="detail.database.disconnet" text="断开连接"/>	    	
+	    </indexitem>
+	     <indexitem target="detail.role" text="规则">
+	    	<indexitem target="detail.role.userRole" text="用户规则">
+	    		<indexitem target="detail.role.userRole.getEnumValueFromFileOrSQL" text="从文件或SQL语句导入枚举值"/>
+	    	</indexitem>
+	    	<indexitem target="detail.role.generateData" text="生成测试数据"/>
+	    </indexitem>
+	    <indexitem target="detail.window.preferences" text="首选项"/>
+	    <indexitem target="detail.exitSystem" text="退出系统"/>
+    </indexitem>
+    <indexitem target="question" text="问题与解答"/>
+	</indexitem>
+  
+</index>

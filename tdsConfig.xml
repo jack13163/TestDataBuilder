@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>TestDataBuilder.SysConfigFile</comment>
+<entry key="locale">zh_CN</entry>
+<entry key="showConfigDialog">true</entry>
+<entry key="lookAndFeel">javax.swing.plaf.metal.MetalLookAndFeel</entry>
+<entry key="lastWorkspace">D:\git_home\TestDataBuilder\projects\newProject33</entry>
+</properties>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="table" type="table">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="table">
+		<xs:sequence>
+			<xs:element name="init" type="init" minOccurs="0"/>
+			<xs:element name="destroy" type="destroy" minOccurs="0"/>
+			<xs:element name="column" type="column" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="count" type="xs:int" use="required"/>
+		<xs:attribute name="onError" default="ignore">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="exit"/>
+					<xs:enumeration value="ignore"/>
+					<xs:enumeration value="query"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="closeIdAutoInsert" type="xs:boolean" default="false"/>
+	</xs:complexType>
+	<xs:complexType name="init">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="description" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="destroy">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="description"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="column">
+		<xs:choice>
+			<xs:element name="code" type="xs:string" minOccurs="0"/>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="ref" type="xs:string"/>
+		<xs:attribute name="value" type="xs:string"/>
+		<xs:attribute name="isPK" type="xs:boolean"/>
+	</xs:complexType>
+</xs:schema>

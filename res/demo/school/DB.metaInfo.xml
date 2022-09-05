@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database java-class="com.testDataBuilder.dbMetaInfo.Database">
+    <dbName>school</dbName>
+    <sortedTableNames>teacher</sortedTableNames>
+    <sortedTableNames>class</sortedTableNames>
+    <sortedTableNames>student</sortedTableNames>
+    <tableNames>class</tableNames>
+    <tableNames>student</tableNames>
+    <tableNames>teacher</tableNames>
+    <tables java-class="com.testDataBuilder.dbMetaInfo.Table">
+        <allFields>id</allFields>
+        <allFields>code</allFields>
+        <allFields>master</allFields>
+        <allFields>classRome</allFields>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>id</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>id (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>code</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>code (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>master</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>master (varchar(255), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>classRome</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>classRome (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <exportedTables>student</exportedTables>
+        <foreignKeys java-class="com.testDataBuilder.dbMetaInfo.ForeignKey">
+            <FKFileds>master</FKFileds>
+            <fkName>FK__class__master__79A81403</fkName>
+            <refFields java-class="java.util.HashMap">
+                <master>ID</master>
+            </refFields>
+            <refTable>teacher</refTable>
+        </foreignKeys>
+        <importedTables>teacher</importedTables>
+        <primaryKey>
+            <fields>id</fields>
+            <pkName>PK__class__78B3EFCA</pkName>
+        </primaryKey>
+        <tableName>class</tableName>
+        <type>TABLE</type>
+    </tables>
+    <tables java-class="com.testDataBuilder.dbMetaInfo.Table">
+        <allFields>ID</allFields>
+        <allFields>no</allFields>
+        <allFields>name</allFields>
+        <allFields>sex</allFields>
+        <allFields>age</allFields>
+        <allFields>tel</allFields>
+        <allFields>birthday</allFields>
+        <allFields>classId</allFields>
+        <allFields>homeAddress</allFields>
+        <allFields>createTime</allFields>
+        <allFields>count</allFields>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">true</autoIncrement>
+            <columnName>ID</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>ID (int, Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">10</size>
+            <type java-class="java.lang.Integer">4</type>
+            <typeName>int identity</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>no</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>no (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>name</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>name (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>sex</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>sex (varchar(10), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">10</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>age</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>age (int, Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">10</size>
+            <type java-class="java.lang.Integer">4</type>
+            <typeName>int</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>tel</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>tel (varchar(256), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">256</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>birthday</columnName>
+            <decimalDigits java-class="java.lang.Integer">3</decimalDigits>
+            <longColumnName>birthday (timestamp, Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">23</size>
+            <type java-class="java.lang.Integer">93</type>
+            <typeName>datetime</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>classId</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>classId (varchar(255), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>homeAddress</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>homeAddress (varchar(255), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>createTime</columnName>
+            <decimalDigits java-class="java.lang.Integer">3</decimalDigits>
+            <longColumnName>createTime (timestamp, Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">23</size>
+            <type java-class="java.lang.Integer">93</type>
+            <typeName>datetime</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>count</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>count (int, Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">10</size>
+            <type java-class="java.lang.Integer">4</type>
+            <typeName>int</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <foreignKeys java-class="com.testDataBuilder.dbMetaInfo.ForeignKey">
+            <FKFileds>classId</FKFileds>
+            <fkName>FK__student__classId__7C8480AE</fkName>
+            <refFields java-class="java.util.HashMap">
+                <classId>id</classId>
+            </refFields>
+            <refTable>class</refTable>
+        </foreignKeys>
+        <importedTables>class</importedTables>
+        <primaryKey>
+            <fields>ID</fields>
+            <pkName>PK__student__7B905C75</pkName>
+        </primaryKey>
+        <tableName>student</tableName>
+        <type>TABLE</type>
+    </tables>
+    <tables java-class="com.testDataBuilder.dbMetaInfo.Table">
+        <allFields>ID</allFields>
+        <allFields>name</allFields>
+        <allFields>sex</allFields>
+        <allFields>tel</allFields>
+        <allFields>homeAddress</allFields>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>ID</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>ID (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>name</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>name (varchar(255), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>sex</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>sex (varchar(10), Not Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">false</nullable>
+            <size java-class="java.lang.Integer">10</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>tel</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>tel (varchar(255), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <columns java-class="com.testDataBuilder.dbMetaInfo.Column">
+            <autoIncrement java-class="java.lang.Boolean">false</autoIncrement>
+            <columnName>homeAddress</columnName>
+            <decimalDigits java-class="java.lang.Integer">0</decimalDigits>
+            <longColumnName>homeAddress (varchar(255), Null)</longColumnName>
+            <nullable java-class="java.lang.Boolean">true</nullable>
+            <size java-class="java.lang.Integer">255</size>
+            <type java-class="java.lang.Integer">12</type>
+            <typeName>varchar</typeName>
+            <unique java-class="java.lang.Boolean">false</unique>
+        </columns>
+        <exportedTables>class</exportedTables>
+        <primaryKey>
+            <fields>ID</fields>
+            <pkName>PK__teacher__76CBA758</pkName>
+        </primaryKey>
+        <tableName>teacher</tableName>
+        <type>TABLE</type>
+    </tables>
+</Database>

@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<title>TestDataBuilder帮助系统</title>
+<link href="css/global.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+<h1 align="center">TestDataBuilder 帮助文档</h1>
+<hr align="left" width="100%" size="4" color="#006699">
+<h3>快速入门:</h3>
+<ul>
+	<li><a href="quickStart/readme.html">系统简介</a>  </li>  
+  <li><a href="quickStart/stepByStep.html">跟我开始</a></li>  
+</ul>
+<h3>使用详解</h3>
+<ul>
+  <li><a href="detail/project/newProject.html">新建工程</a></li>   
+  <li><a href="detail/project/openProject.html">打开工程</a></li>
+  <li><a href="detail/project/closeProject.html">关闭工程</a></li>    
+  <li><a href="detail/exitSystem.html">退出系统</a></li>
+  <li><a href="detail/project/viewFileInExplorer.html">从文件浏览器中查看工程</a></li>
+  <li><a href="detail/database/defConnection.html">修改默认数据库配置</a></li>
+  <li><a href="detail/database/newConnection.html">新建连接</a></li>
+  <li><a href="detail/database/configConnection.html">配置连接</a></li>
+  <li><a href="detail/database/connet.html">连接</a></li>
+  <li><a href="detail/database/disconnect.html">断开连接</a></li>
+  <li><a href="detail/tdbConfigure/tdsConfigure.html">配置测试数据生成规则</a></li>
+  <li><a href="detail/role/userRole.html">用户规则</a></li> 
+   <li><a href="detail/role/generateData.html">生成测试数据</a></li> 
+  
+  <li><a href="detail/window/preferences.html">首选项配置</a></li> 
+</ul>
+<h3>问题与解答</h3>
+<ul>
+   <li></li>
+</ul>
+</body>
+</html>

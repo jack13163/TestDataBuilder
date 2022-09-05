@@ -1,0 +1,4 @@
+运行本程序需要安装JRE5或以后版本.
+可以到Sun官方网站下载.
+https://sdlc3d.sun.com/ECom/EComActionServlet;jsessionid=576B196B4A7B8AC8B81BF0638743BA47
+Windows平台请下载Windows版本.

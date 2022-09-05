@@ -1,0 +1,14 @@
+@charset "utf-8";
+body {
+	background-color: #FDFFF4;
+}
+body,td,th {
+	color: #666666;
+}
+.hideTxt {
+	color: #FDFFF4;
+}
+.tdsSysFont {
+	font-style: italic;
+	font-weight: bold;
+}

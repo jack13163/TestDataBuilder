@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="ui"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="src" path="help"/>
+	<classpathentry kind="lib" path="res/lib/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="res/lib/commons-lang-2.0.jar"/>
+	<classpathentry sourcepath="E:/sourceCode/XML相关/dom4j-1.6.1/src/java" kind="lib" path="res/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="res/lib/jox-1.17b3.jar"/>
+	<classpathentry kind="lib" path="res/lib/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="res/lib/resolver.jar"/>
+	<classpathentry kind="lib" path="res/lib/sqljdbc.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="res/lib/jhall.jar"/>
+	<classpathentry kind="lib" path="res/lib/oracleJDBC.jar"/>
+	<classpathentry kind="lib" path="res/lib/jaxen-1.1-beta-7.jar"/>
+	<classpathentry kind="lib" path="res/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="res/lib/dtdparser121.jar"/>
+	<classpathentry kind="lib" path="res/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="res/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="res/lib/tools.jar"/>
+	<classpathentry kind="lib" path="res/lib/jedit-syntax.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
